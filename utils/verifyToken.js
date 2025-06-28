@@ -5,22 +5,22 @@ const verifyToken = (roles = []) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'Access denied. No token provided.' });
+      return res.status(401).json({ message: 'Unauthorized: No token' });
     }
 
     const token = authHeader.split(' ')[1];
+
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decoded;
 
-      // Role-based access check
-      if (roles.length && !roles.includes(req.user.role)) {
-        return res.status(403).json({ message: 'Access denied. Insufficient role.' });
+      if (roles.length > 0 && !roles.includes(decoded.role)) {
+        return res.status(403).json({ message: 'Forbidden: Insufficient role' });
       }
 
       next();
     } catch (err) {
-      res.status(403).json({ message: 'Invalid token' });
+      return res.status(401).json({ message: 'Invalid token' });
     }
   };
 };

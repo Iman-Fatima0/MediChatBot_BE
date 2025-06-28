@@ -1,4 +1,8 @@
 {
+<<<<<< feature/be-auth-jwt
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+
   "name": "medichatbot_be",
   "version": "1.0.0",
   "description": "backend of Medi Chat Bot based App",

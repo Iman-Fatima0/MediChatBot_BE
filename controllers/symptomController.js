@@ -14,12 +14,13 @@ exports.checkSymptoms = async (req, res) => {
       Keep it concise and medically appropriate.
     `;
 
-    const result = await geminiModel.generateContent(prompt);
-    const response = await result.response.text();
+    const result = await geminiModel.generateContent(prompt); // generate content using Gemini
+    const response = await result.response; // access the response object (it's a promise)
+    const text = response.text(); // get the text from the response
 
-    res.status(200).json({ response });
+    res.status(200).json({ response: text });
   } catch (error) {
-    console.error('Gemini Error:', error);
+    console.error('Gemini Error:', error.message || error);
     res.status(500).json({ message: 'Failed to analyze symptoms' });
   }
 };

@@ -18,20 +18,8 @@ app.get('/', (req, res) => {
   res.send(' Medical Assistant Backend is Running...');
 });
 
-
-// app.use('/api/auth', require('./routes/authroutes'));
-// app.use('/api/symptom', require('./routes/symptomRoutes'));
-// app.use('/api/user', require('./routes/userRoutes'));
-// app.use('/api/admin', require('./routes/adminRoutes'));
-// app.use('/api/chatbot', require('./routes/chatbotRoutes'));
-// app.use('/api/symptom', require('./routes/symptomRoutes'));
-// app.use('/api/appointments', require('./routes/appointmentRoutes'));
-// app.use('/api/reminders', require('./routes/reminderRoutes'));
-// app.use('/api/records', require('./routes/recordRoutes'));
-// app.use('/api/video', require('./routes/videoRoutes'));
-// app.use('/api/notifications', require('./routes/notificationRoutes'));
-app.use('/api/symptom', require('./routes/symptomRoutes'));
-
+// API Routes
+app.use('/api/auth', require('./routes/authroutes'));
 
 app.use((err, req, res, next) => {
   console.error(' Global Error:', err.stack);

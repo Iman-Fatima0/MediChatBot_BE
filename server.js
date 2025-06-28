@@ -19,7 +19,8 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/auth', require('./routes/authroutes'));
+app.use('/api/symptom', require('./routes/symptomRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/chatbot', require('./routes/chatbotRoutes'));
